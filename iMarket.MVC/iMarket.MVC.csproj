@@ -195,7 +195,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\iMarketContext.cs" />
+    <Compile Include="Models\IMarketDBContext.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Identity.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
