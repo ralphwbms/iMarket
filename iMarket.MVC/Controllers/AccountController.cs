@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using iMarket.MVC.ViewModels;
-using iMarket.MVC.Models;
+using iMarket.MVC.Infra.Context;
 
 namespace iMarket.MVC.Controllers
 {

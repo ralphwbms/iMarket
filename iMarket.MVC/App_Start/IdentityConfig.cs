@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using iMarket.MVC.Models;
+using iMarket.MVC.Infra.Context;
 
 namespace iMarket.MVC
 {

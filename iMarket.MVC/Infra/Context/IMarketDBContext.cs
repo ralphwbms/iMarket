@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace iMarket.MVC.Models
+namespace iMarket.MVC.Infra.Context
 {
     public class IMarketDBContext : IdentityDbContext<ApplicationUser>
     {
