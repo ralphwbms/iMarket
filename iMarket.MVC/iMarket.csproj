@@ -200,10 +200,15 @@
     <Compile Include="Migrations\201711160415088_ModeloInicial.Designer.cs">
       <DependentUpon>201711160415088_ModeloInicial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711160520351_AddedProdutoTable.cs" />
+    <Compile Include="Migrations\201711160520351_AddedProdutoTable.Designer.cs">
+      <DependentUpon>201711160520351_AddedProdutoTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Consumidor.cs" />
     <Compile Include="Models\Departamento.cs" />
     <Compile Include="Models\Endereco.cs" />
+    <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Supermercado.cs" />
     <Compile Include="Models\TiposEndereco.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -290,6 +295,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711160415088_ModeloInicial.resx">
       <DependentUpon>201711160415088_ModeloInicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711160520351_AddedProdutoTable.resx">
+      <DependentUpon>201711160520351_AddedProdutoTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

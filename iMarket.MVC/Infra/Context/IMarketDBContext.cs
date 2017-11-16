@@ -11,6 +11,7 @@ namespace iMarket.Infra.Context
         public DbSet<Consumidor> Consumidores { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Supermercado> Supermercados { get; set; }
+        public DbSet<Produto> Produtos { get; set; }
 
         public IMarketDBContext()
             : base("iMarketDB", throwIfV1Schema: false)
