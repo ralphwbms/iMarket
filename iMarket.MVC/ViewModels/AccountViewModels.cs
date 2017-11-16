@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace iMarket.MVC.ViewModels
+namespace iMarket.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {

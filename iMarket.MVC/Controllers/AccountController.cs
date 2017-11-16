@@ -8,10 +8,10 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using iMarket.MVC.ViewModels;
-using iMarket.MVC.Infra.Context;
+using iMarket.ViewModels;
+using iMarket.Infra.Context;
 
-namespace iMarket.MVC.Controllers
+namespace iMarket.Controllers
 {
     [Authorize]
     public class AccountController : Controller

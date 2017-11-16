@@ -10,9 +10,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using iMarket.MVC.Infra.Context;
+using iMarket.Infra.Context;
 
-namespace iMarket.MVC
+namespace iMarket
 {
     public class EmailService : IIdentityMessageService
     {

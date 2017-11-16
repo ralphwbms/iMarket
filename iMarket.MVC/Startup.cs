@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(iMarket.MVC.Startup))]
-namespace iMarket.MVC
+[assembly: OwinStartupAttribute(typeof(iMarket.Startup))]
+namespace iMarket
 {
     public partial class Startup
     {

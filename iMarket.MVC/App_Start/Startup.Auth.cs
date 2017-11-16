@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using iMarket.MVC.Infra.Context;
+using iMarket.Infra.Context;
 
-namespace iMarket.MVC
+namespace iMarket
 {
     public partial class Startup
     {

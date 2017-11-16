@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace iMarket.MVC.Controllers
+namespace iMarket.Controllers
 {
     public class HomeController : Controller
     {

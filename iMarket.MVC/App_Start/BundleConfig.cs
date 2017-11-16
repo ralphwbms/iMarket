@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace iMarket.MVC
+namespace iMarket
 {
     public class BundleConfig
     {

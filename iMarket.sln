@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iMarket.MVC", "iMarket.MVC\iMarket.MVC.csproj", "{2DB0E669-9AE0-4DEB-9D1B-3F27E31577DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iMarket", "iMarket.MVC\iMarket.csproj", "{2DB0E669-9AE0-4DEB-9D1B-3F27E31577DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
