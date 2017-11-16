@@ -40,5 +40,7 @@ namespace iMarket.Models
 
         public Consumidor Consumidor { get; set; }
         public int ConsumidorId { get; set; }
+
+        public IEnumerable<ItensCompra> ItensCompra { get; set; }
     }
 }

@@ -13,6 +13,7 @@ namespace iMarket.Infra.Context
         public DbSet<Supermercado> Supermercados { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Compra> Compras { get; set; }
+        public DbSet<ItensCompra> ItensCompra { get; set; }
 
         public IMarketDBContext()
             : base("iMarketDB", throwIfV1Schema: false)

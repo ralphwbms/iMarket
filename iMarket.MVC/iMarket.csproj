@@ -208,11 +208,16 @@
     <Compile Include="Migrations\201711160552315_AddedComprasTable.Designer.cs">
       <DependentUpon>201711160552315_AddedComprasTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711160558382_AddedItensCompraTables.cs" />
+    <Compile Include="Migrations\201711160558382_AddedItensCompraTables.Designer.cs">
+      <DependentUpon>201711160558382_AddedItensCompraTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Compra.cs" />
     <Compile Include="Models\Consumidor.cs" />
     <Compile Include="Models\Departamento.cs" />
     <Compile Include="Models\Endereco.cs" />
+    <Compile Include="Models\ItensCompra.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Supermercado.cs" />
     <Compile Include="Models\TiposEndereco.cs" />
@@ -306,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711160552315_AddedComprasTable.resx">
       <DependentUpon>201711160552315_AddedComprasTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711160558382_AddedItensCompraTables.resx">
+      <DependentUpon>201711160558382_AddedItensCompraTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
