@@ -65,6 +65,19 @@ namespace iMarket.ViewModels
     public class RegisterViewModel
     {
         [Required]
+        [MaxLength(40)]
+        [Display(Name = "Nome")]
+        public string Nome { get; set; }
+        [Required]
+        [MaxLength(60)]
+        [Display(Name = "Sobrenome")]
+        public string Sobrenome { get; set; }
+        [Required]
+        [MaxLength(11)]
+        [Display(Name = "CPF")]
+        public string CPF { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
