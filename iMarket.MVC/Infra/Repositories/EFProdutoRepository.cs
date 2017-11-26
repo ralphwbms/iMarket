@@ -6,11 +6,11 @@ namespace iMarket.Infra.Repositories
 {
     public class EFProdutoRepository
     {
-        private IMarketDBContext context = new IMarketDBContext();
+        private IMarketDBContext Db = new IMarketDBContext();
 
         public IEnumerable<Produto> Produtos
         {
-            get { return context.Produtos; }
+            get { return Db.Produtos; }
         }
 
         public void SalvarProduto(Produto produto)
@@ -18,11 +18,11 @@ namespace iMarket.Infra.Repositories
 
             if (produto.Id == 0)
             {
-                context.Produtos.Add(produto);
+                Db.Produtos.Add(produto);
             }
             else
             {
-                Produto dbEntry = context.Produtos.Find(produto.Id);
+                Produto dbEntry = Db.Produtos.Find(produto.Id);
                 if (dbEntry != null)
                 {
                     dbEntry.Nome = produto.Nome;
@@ -31,16 +31,16 @@ namespace iMarket.Infra.Repositories
                     dbEntry.DepartamentoId = produto.DepartamentoId;
                 }
             }
-            context.SaveChanges();
+            Db.SaveChanges();
         }
 
         public Produto DeletarProduto(int productID)
         {
-            Produto dbEntry = context.Produtos.Find(productID);
+            Produto dbEntry = Db.Produtos.Find(productID);
             if (dbEntry != null)
             {
-                context.Produtos.Remove(dbEntry);
-                context.SaveChanges();
+                Db.Produtos.Remove(dbEntry);
+                Db.SaveChanges();
             }
             return dbEntry;
         }

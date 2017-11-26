@@ -27,14 +27,13 @@ namespace iMarket.Models
 
         [Required]
         [MaxLength(80)]
-        [Display(Name = "Logradouro")]
+        [Display(Name = "Endereço")]
         public string Logradouro { get; set; }
 
         [Required]
         [Display(Name = "Nº")]
         public int Numero { get; set; }
 
-        [Required]
         [MaxLength(60)]
         [Display(Name = "Complemento")]
         public string Complemento { get; set; }
@@ -58,6 +57,11 @@ namespace iMarket.Models
         [MaxLength(50)]
         [Display(Name = "Cidade")]
         public string Cidade { get; set; }
+
+        [Required]
+        [MaxLength(20)]
+        [Display(Name = "Telefone de Contato")]
+        public string TelefoneContato { get; set; }
 
         [Required]
         [Display(Name = "Ativo")]
