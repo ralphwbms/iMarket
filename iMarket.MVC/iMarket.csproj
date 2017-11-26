@@ -216,6 +216,10 @@
     <Compile Include="Migrations\201711172358375_AddedNomeSobrenomeCPFToUserTable.Designer.cs">
       <DependentUpon>201711172358375_AddedNomeSobrenomeCPFToUserTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711260220340_RemoveNomeSobrenomeCPFFromUsersTable.cs" />
+    <Compile Include="Migrations\201711260220340_RemoveNomeSobrenomeCPFFromUsersTable.Designer.cs">
+      <DependentUpon>201711260220340_RemoveNomeSobrenomeCPFFromUsersTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Compra.cs" />
     <Compile Include="Models\Consumidor.cs" />
@@ -321,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711172358375_AddedNomeSobrenomeCPFToUserTable.resx">
       <DependentUpon>201711172358375_AddedNomeSobrenomeCPFToUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711260220340_RemoveNomeSobrenomeCPFFromUsersTable.resx">
+      <DependentUpon>201711260220340_RemoveNomeSobrenomeCPFFromUsersTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
