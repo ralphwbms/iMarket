@@ -13,18 +13,20 @@ namespace iMarket.Controllers
     public class AdminController : Controller
     {
         private EFSupermercadoRepository supermercadoRepo;
+        private EFDepartamentoRepository departamentoRepo;
 
         public AdminController()
         {
             supermercadoRepo = new EFSupermercadoRepository();
+            departamentoRepo = new EFDepartamentoRepository();
         }
 
-        // GET: Admin
         public ActionResult Index()
         {
             return View();
         }
 
+        #region Supermercado Actions
         public ActionResult IndexSupermercado()
         {
             var supermercados = supermercadoRepo.Supermercados;
@@ -79,5 +81,82 @@ namespace iMarket.Controllers
             TempData["message"] = "Supermercado excluído com sucesso!";
             return RedirectToAction("IndexSupermercado");
         }
+        #endregion
+
+        #region Departamento Actions
+        public ActionResult IndexDepartamento()
+        {
+            var departamentos = departamentoRepo.Departamentos;
+
+            return View("Departamento/Index", departamentos);
+        }
+
+        public ActionResult EditDepartamento(int Id)
+        {
+            Departamento departamento = departamentoRepo.Departamentos
+                .FirstOrDefault(s => s.Id == Id);
+
+            return View("Departamento/Edit", departamento);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditDepartamento(Departamento departamento)
+        {
+            if (ModelState.IsValid)
+            {
+                departamentoRepo.SalvarDepartamento(departamento);
+                TempData["message"] = "Alterações salvas com sucesso!";
+                return RedirectToAction("IndexDepartamento");
+            }
+            else
+                return View("Departamento/Edit", departamento);
+        }
+
+        public ActionResult NewDepartamento()
+        {
+            return View("Departamento/New");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult NewDepartamento(Departamento departamento)
+        {
+            if (ModelState.IsValid)
+            {
+                departamentoRepo.SalvarDepartamento(departamento);
+                TempData["message"] = "Alterações salvas com sucesso!";
+                return RedirectToAction("IndexDepartamento");
+            }
+            else
+                return View("Departamento/New", departamento);
+        }
+
+
+        public ActionResult DetailsDepartamento(int Id)
+        {
+            Departamento departamento = departamentoRepo.Departamentos
+                .FirstOrDefault(s => s.Id == Id);
+
+            return View("Departamento/Details", departamento);
+        }
+
+        public ActionResult DeleteDepartamento(int Id)
+        {
+            Departamento departamento = departamentoRepo.Departamentos
+                .FirstOrDefault(s => s.Id == Id);
+
+            return View("Departamento/Delete", departamento);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteDepartamento(Departamento departamento)
+        {
+            departamentoRepo.DeletarDepartamento(departamento.Id);
+            TempData["message"] = "Departamento excluído com sucesso!";
+            return RedirectToAction("IndexDepartamento");
+        }
+        #endregion
     }
 }

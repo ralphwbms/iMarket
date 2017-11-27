@@ -1,0 +1,50 @@
+﻿@model IEnumerable<iMarket.Models.Departamento>
+
+@{
+    ViewBag.Title = "Todos Departamentos";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading"><h2>Lista dos Departamentos</h2></div>
+    <div class="panel-body">
+        <p>Os departamentos servem para montar o menu de navegação por categoria do site.</p>
+    </div>
+
+    <table class="table table-responsive table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "DetailsDepartamento", new { id = item.Id }, new { @class = "btn btn-success btn-sm glyphicon glyphicon-zoom-in" })
+                    @Html.ActionLink(" ", "EditDepartamento", new { id = item.Id }, new { @class = "btn btn-warning btn-sm glyphicon glyphicon-pencil" })
+                    @Html.ActionLink(" ", "DeleteDepartamento", new { id = item.Id }, new { @class = "btn btn-danger btn-sm glyphicon glyphicon-remove" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<p>
+    @Html.ActionLink("Novo Departamento", "NewDepartamento", new { id = 0 }, new { @class = "btn btn-primary btn-sm" })
+</p>
