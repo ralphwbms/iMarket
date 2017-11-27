@@ -25,11 +25,59 @@ namespace iMarket.Controllers
             return View();
         }
 
-        public ActionResult SupermercadoIndex()
+        public ActionResult IndexSupermercado()
         {
             var supermercados = supermercadoRepo.Supermercados;
 
             return View("Supermercado/Index", supermercados);
+        }
+
+        public ActionResult EditSupermercado(int Id)
+        {
+            Supermercado supermercado = supermercadoRepo.Supermercados
+                .FirstOrDefault(s => s.Id == Id);
+
+            return View("Supermercado/Edit", supermercado);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditSupermercado(Supermercado supermercado)
+        {
+            if (ModelState.IsValid)
+            {
+                supermercadoRepo.SalvarSupermercado(supermercado);
+                TempData["message"] = "Alterações salvas com sucesso!";
+                return RedirectToAction("IndexSupermercado");
+            }
+            else
+                return View("Supermercado/Edit", supermercado);
+        }
+
+
+        public ActionResult DetailsSupermercado(int Id)
+        {
+            Supermercado supermercado = supermercadoRepo.Supermercados
+                .FirstOrDefault(s => s.Id == Id);
+
+            return View("Supermercado/Details", supermercado);
+        }
+
+        public ActionResult DeleteSupermercado(int Id)
+        {
+            Supermercado supermercado = supermercadoRepo.Supermercados
+                .FirstOrDefault(s => s.Id == Id);
+
+            return View("Supermercado/Delete", supermercado);
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteSupermercado(Supermercado supermercado)
+        {
+            supermercadoRepo.DeletarSupermercado(supermercado.Id);
+            TempData["message"] = "Supermercado excluído com sucesso!";
+            return RedirectToAction("IndexSupermercado");
         }
     }
 }

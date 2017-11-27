@@ -48,9 +48,9 @@ namespace iMarket.Infra.Repositories
             Db.SaveChanges();
         }
 
-        public Supermercado DeletarSupermercado(int productID)
+        public Supermercado DeletarSupermercado(int supermercadoId)
         {
-            Supermercado dbEntry = Db.Supermercados.Find(productID);
+            Supermercado dbEntry = Db.Supermercados.Find(supermercadoId);
             if (dbEntry != null)
             {
                 Db.Supermercados.Remove(dbEntry);

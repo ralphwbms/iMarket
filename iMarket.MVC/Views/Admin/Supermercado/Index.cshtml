@@ -1,0 +1,82 @@
+﻿@model IEnumerable<iMarket.Models.Supermercado>
+
+@{
+    ViewBag.Title = "Todos Supermercados";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading"><h2>Lista dos Supermercados</h2></div>
+    <div class="panel-body">
+        <p>Relação de supermercados.</p>
+    </div>
+
+    <table class="table table-responsive table-striped">
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RazaoSocial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CNPJ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TelefoneContato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ativo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCadastro)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RazaoSocial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CNPJ)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TelefoneContato)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UF)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ativo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataCadastro)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "DetailsSupermercado", new { id = item.Id }, new { @class = "btn btn-success btn-sm glyphicon glyphicon-zoom-in" })
+                    @Html.ActionLink(" ", "EditSupermercado", new { id = item.Id }, new { @class = "btn btn-warning btn-sm glyphicon glyphicon-pencil" })
+                    @Html.ActionLink(" ", "DeleteSupermercado", new { id = item.Id }, new { @class = "btn btn-danger btn-sm glyphicon glyphicon-remove" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

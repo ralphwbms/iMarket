@@ -8,11 +8,11 @@ using iMarket.Infra.Repositories;
 
 namespace iMarket.Controllers
 {
+    [Authorize]
     public class SupermercadoController : Controller
     {
         private EFSupermercadoRepository Rep = new EFSupermercadoRepository();
 
-        // GET: Supermercado
         public ActionResult Index()
         {
             return View();
