@@ -229,6 +229,14 @@
     <Compile Include="Migrations\201711261719006_addedTelefoneContatoToSupermercadosTable.Designer.cs">
       <DependentUpon>201711261719006_addedTelefoneContatoToSupermercadosTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711261853240_SeedRoles.cs" />
+    <Compile Include="Migrations\201711261853240_SeedRoles.Designer.cs">
+      <DependentUpon>201711261853240_SeedRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711261859113_SeedAdminUser.cs" />
+    <Compile Include="Migrations\201711261859113_SeedAdminUser.Designer.cs">
+      <DependentUpon>201711261859113_SeedAdminUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Carrinho.cs" />
     <Compile Include="Models\Compra.cs" />
@@ -310,6 +318,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Admin\Supermercado\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -345,6 +354,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711261719006_addedTelefoneContatoToSupermercadosTable.resx">
       <DependentUpon>201711261719006_addedTelefoneContatoToSupermercadosTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711261853240_SeedRoles.resx">
+      <DependentUpon>201711261853240_SeedRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711261859113_SeedAdminUser.resx">
+      <DependentUpon>201711261859113_SeedAdminUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

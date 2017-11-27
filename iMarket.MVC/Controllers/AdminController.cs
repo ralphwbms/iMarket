@@ -5,10 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using iMarket.Infra.Repositories;
 using iMarket.Models;
+using iMarket.ViewModels;
 
 namespace iMarket.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private EFSupermercadoRepository supermercadoRepo;
@@ -22,6 +23,13 @@ namespace iMarket.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult SupermercadoIndex()
+        {
+            var supermercados = supermercadoRepo.Supermercados;
+
+            return View("Supermercado/Index", supermercados);
         }
     }
 }
