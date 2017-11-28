@@ -1,6 +1,7 @@
 ﻿using iMarket.Models;
-using System.Collections.Generic;
 using iMarket.Infra.Context;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace iMarket.Infra.Repositories
 {
@@ -15,9 +16,10 @@ namespace iMarket.Infra.Repositories
 
         public void SalvarDepartamento(Departamento departamento)
         {
-
             if (departamento.Id == 0)
             {
+                var maxDepartamentoId = Db.Departamentos.OrderByDescending(d => d.Id).FirstOrDefault().Id;
+                departamento.Id = ++maxDepartamentoId;
                 Db.Departamentos.Add(departamento);
             }
             else

@@ -238,6 +238,14 @@
     <Compile Include="Migrations\201711261859113_SeedAdminUser.Designer.cs">
       <DependentUpon>201711261859113_SeedAdminUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711280146088_AlterColumnIdCategoriaToByte.cs" />
+    <Compile Include="Migrations\201711280146088_AlterColumnIdCategoriaToByte.Designer.cs">
+      <DependentUpon>201711280146088_AlterColumnIdCategoriaToByte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711280201456_SeedDepartamentosTable.cs" />
+    <Compile Include="Migrations\201711280201456_SeedDepartamentosTable.Designer.cs">
+      <DependentUpon>201711280201456_SeedDepartamentosTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Carrinho.cs" />
     <Compile Include="Models\Compra.cs" />
@@ -368,6 +376,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711261859113_SeedAdminUser.resx">
       <DependentUpon>201711261859113_SeedAdminUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711280146088_AlterColumnIdCategoriaToByte.resx">
+      <DependentUpon>201711280146088_AlterColumnIdCategoriaToByte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711280201456_SeedDepartamentosTable.resx">
+      <DependentUpon>201711280201456_SeedDepartamentosTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

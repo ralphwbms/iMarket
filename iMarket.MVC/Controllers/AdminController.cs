@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using iMarket.Infra.Repositories;
 using iMarket.Models;
-using iMarket.ViewModels;
 
 namespace iMarket.Controllers
 {
@@ -156,6 +153,13 @@ namespace iMarket.Controllers
             departamentoRepo.DeletarDepartamento(departamento.Id);
             TempData["message"] = "Departamento excluído com sucesso!";
             return RedirectToAction("IndexDepartamento");
+        }
+        #endregion
+
+        #region Users Actions
+        public ActionResult IndexUsers()
+        {
+            return View();
         }
         #endregion
     }
