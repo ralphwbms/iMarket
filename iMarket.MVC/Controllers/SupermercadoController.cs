@@ -11,7 +11,8 @@ namespace iMarket.Controllers
     [Authorize]
     public class SupermercadoController : Controller
     {
-        private EFSupermercadoRepository Rep = new EFSupermercadoRepository();
+        private EFSupermercadoRepository supermercadoRep = new EFSupermercadoRepository();
+        private EFProdutoRepository produtoRep = new EFProdutoRepository();
 
         public ActionResult Index()
         {
@@ -32,12 +33,18 @@ namespace iMarket.Controllers
                 supermercado.Ativo = false;
                 supermercado.DataCadastro = DateTime.Now;
 
-                Rep.SalvarSupermercado(supermercado);
+                supermercadoRep.SalvarSupermercado(supermercado);
 
                 return View("ConfirmacaoAfiliacao");
             }
 
             return View(supermercado);
+        }
+
+        public ActionResult IndexProdutos()
+        {
+            var produtos = produtoRep.ProdutosBySupermercado(3);
+            return View("Produto/Index", produtos);
         }
     }
 }

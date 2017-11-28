@@ -16,9 +16,11 @@ namespace iMarket.Models
 
         [Required]
         [Range(0d, Double.MaxValue)]
+        [Display(Name = "Preço")]
         public Decimal Preco { get; set; }
 
         [Range(0d, Double.MaxValue)]
+        [Display(Name = "Preço Promocional")]
         public Decimal PrecoPromocional { get; set; }
 
         [Required]

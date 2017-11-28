@@ -1,5 +1,6 @@
-﻿using iMarket.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
+using iMarket.Models;
 using iMarket.Infra.Context;
 
 namespace iMarket.Infra.Repositories
@@ -11,6 +12,11 @@ namespace iMarket.Infra.Repositories
         public IEnumerable<Produto> Produtos
         {
             get { return Db.Produtos; }
+        }
+
+        public IEnumerable<Produto> ProdutosBySupermercado(int supermercadoId)
+        {
+            return Db.Produtos.Where(p => p.SupermercadoId == supermercadoId).ToList();
         }
 
         public void SalvarProduto(Produto produto)

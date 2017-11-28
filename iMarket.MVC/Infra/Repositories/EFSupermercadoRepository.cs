@@ -19,6 +19,11 @@ namespace iMarket.Infra.Repositories
             return Db.Supermercados.First(s => s.CNPJ == CNPJ);
         }
 
+        public Supermercado LocalizarPorUserId(string userId)
+        {
+            return Db.Supermercados.FirstOrDefault(s => s.UsuarioId == userId);
+        }
+
         public void SalvarSupermercado(Supermercado supermercado)
         {
 
