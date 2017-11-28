@@ -201,6 +201,7 @@
     <Compile Include="Infra\Repositories\EFDepartamentoRepository.cs" />
     <Compile Include="Infra\Repositories\EFProdutoRepository.cs" />
     <Compile Include="Infra\Repositories\EFSupermercadoRepository.cs" />
+    <Compile Include="Infra\Repositories\EFUserRepository.cs" />
     <Compile Include="Infra\Repositories\ProcessarOrdemEmail.cs" />
     <Compile Include="Migrations\201711160415088_ModeloInicial.cs" />
     <Compile Include="Migrations\201711160415088_ModeloInicial.Designer.cs">
@@ -332,6 +333,7 @@
     <Content Include="Views\Supermercado\Index.cshtml" />
     <Content Include="Views\Admin\Departamento\Index.cshtml" />
     <Content Include="Views\Admin\Departamento\New.cshtml" />
+    <Content Include="Views\Admin\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

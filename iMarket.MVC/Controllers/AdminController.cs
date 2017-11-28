@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using iMarket.Infra.Repositories;
 using iMarket.Models;
+using iMarket.Infra.Repositories;
+using iMarket.Infra.Context;
 
 namespace iMarket.Controllers
 {
@@ -11,11 +12,13 @@ namespace iMarket.Controllers
     {
         private EFSupermercadoRepository supermercadoRepo;
         private EFDepartamentoRepository departamentoRepo;
+        private EFUserRepository userRepo;
 
         public AdminController()
         {
             supermercadoRepo = new EFSupermercadoRepository();
             departamentoRepo = new EFDepartamentoRepository();
+            userRepo = new EFUserRepository();
         }
 
         public ActionResult Index()
@@ -159,7 +162,7 @@ namespace iMarket.Controllers
         #region Users Actions
         public ActionResult IndexUsers()
         {
-            return View();
+            return View("User/Index", userRepo.Users);
         }
         #endregion
     }

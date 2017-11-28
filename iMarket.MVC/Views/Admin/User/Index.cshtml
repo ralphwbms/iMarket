@@ -1,0 +1,38 @@
+﻿@model IEnumerable<iMarket.Models.User>
+
+@{
+    ViewBag.Title = "Todos Usuários";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-heading"><h2>Lista dos Usuários</h2></div>
+    <div class="panel-body">
+        <p>Aqui estão listadas todos os tipos de usuários do site: consumidor, supermercado e administrador.</p>
+    </div>
+
+    <table class="table table-responsive table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
