@@ -8,8 +8,8 @@ namespace iMarket.Migrations
         public override void Up()
         {
             Sql("INSERT INTO Roles (Id, Name) VALUES ('1', 'Admin')");
-            Sql("INSERT INTO Roles (Id, Name) VALUES ('2', 'Consumidor')");
-            Sql("INSERT INTO Roles (Id, Name) VALUES ('3', 'Supermercado')");
+            Sql("INSERT INTO Roles (Id, Name) VALUES ('2', 'Supermercado')");
+            Sql("INSERT INTO Roles (Id, Name) VALUES ('3', 'Consumidor')");
         }
         
         public override void Down()

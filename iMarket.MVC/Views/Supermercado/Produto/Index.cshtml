@@ -35,7 +35,7 @@
                 @Html.DisplayNameFor(model => model.TemEstoque)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DepartamentoId)
+                @Html.DisplayNameFor(model => model.Departamento)
             </th>
             <th></th>
         </tr>
@@ -59,7 +59,7 @@
                     @Html.DisplayFor(modelItem => item.TemEstoque)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DepartamentoId)
+                    @Html.DisplayFor(modelItem => item.Departamento.Nome)
                 </td>
                 <td>
                     @Html.ActionLink(" ", "DetailsProduto", new { id = item.Id }, new { @class = "btn btn-success btn-sm glyphicon glyphicon-zoom-in" })

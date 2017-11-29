@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Globalization;
 using System.Linq;
-using System.Security.Claims;
+using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -10,6 +9,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using iMarket.ViewModels;
 using iMarket.Models;
+using iMarket.Infra.Repositories;
 
 namespace iMarket.Controllers
 {
@@ -18,15 +18,20 @@ namespace iMarket.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private EFUserRepository _userRepository;
+        private EFSupermercadoRepository _supermercadoRepository;
 
         public AccountController()
         {
+
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _userRepository = new EFUserRepository();
+            _supermercadoRepository = new EFSupermercadoRepository();
         }
 
         public ApplicationSignInManager SignInManager
@@ -80,7 +85,27 @@ namespace iMarket.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+
+                    var userId = UserManager.Users.
+                              FirstOrDefault(u => u.Email == model.Email).Id;
+
+                    Session["userId"] = userId;
+
+                    if (UserManager.IsInRole(userId, "Admin"))
+                        return RedirectToAction("Index", "Admin");
+
+                    if (UserManager.IsInRole(userId, "Supermercado"))
+                    {
+                        var supRep = new EFSupermercadoRepository();
+                        var supermercadoId = supRep.Supermercados.
+                                FirstOrDefault(s => s.UsuarioId == userId).Id;
+                        Session["supermercadoId"] = supermercadoId;
+
+                        return RedirectToAction("Index", "Supermercado");
+                    }
+
                     return RedirectToLocal(returnUrl);
+                    
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

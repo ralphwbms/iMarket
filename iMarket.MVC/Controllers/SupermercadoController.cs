@@ -4,15 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using iMarket.Models;
+using iMarket.ViewModels;
 using iMarket.Infra.Repositories;
+using Microsoft.AspNet.Identity;
 
 namespace iMarket.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Supermercado")]
     public class SupermercadoController : Controller
     {
         private EFSupermercadoRepository supermercadoRep = new EFSupermercadoRepository();
         private EFProdutoRepository produtoRep = new EFProdutoRepository();
+        private EFUserRepository userRep = new EFUserRepository();
+        private EFDepartamentoRepository departamentoRep = new EFDepartamentoRepository();
 
         public ActionResult Index()
         {
@@ -43,7 +47,40 @@ namespace iMarket.Controllers
 
         public ActionResult IndexProdutos()
         {
-            var produtos = produtoRep.ProdutosBySupermercado(3);
+            string userId = User.Identity.GetUserId();
+            int supermercadoId = supermercadoRep.LocalizarPorUserId(userId).Id;
+
+            var produtos = produtoRep.ProdutosBySupermercado(supermercadoId);
+            return View("Produto/Index", produtos);
+        }
+
+        public ActionResult NewProduto()
+        {
+            var departamentos = departamentoRep.Departamentos.ToList();
+            var produto = new Produto();
+
+            var viewModel = new NewProdutoViewModel()
+            {
+                Departamentos = departamentos,
+                Produto = produto
+            };
+
+            return View("Produto/New", viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult NewProduto(Produto produto)
+        {
+            string userId = User.Identity.GetUserId();
+            int supermercadoId = supermercadoRep.LocalizarPorUserId(userId).Id;
+
+            produto.SupermercadoId = supermercadoId;
+
+            produtoRep.SalvarProduto(produto);
+
+            var produtos = produtoRep.ProdutosBySupermercado(supermercadoId);
+
             return View("Produto/Index", produtos);
         }
     }

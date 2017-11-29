@@ -2,6 +2,7 @@
 using System.Linq;
 using iMarket.Models;
 using iMarket.Infra.Context;
+using System.Data.Entity;
 
 namespace iMarket.Infra.Repositories
 {
@@ -16,7 +17,8 @@ namespace iMarket.Infra.Repositories
 
         public IEnumerable<Produto> ProdutosBySupermercado(int supermercadoId)
         {
-            return Db.Produtos.Where(p => p.SupermercadoId == supermercadoId).ToList();
+            return Db.Produtos.Where(p => p.SupermercadoId == supermercadoId).
+                Include(p => p.Departamento).ToList();
         }
 
         public void SalvarProduto(Produto produto)
