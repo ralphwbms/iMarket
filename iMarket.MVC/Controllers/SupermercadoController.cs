@@ -18,11 +18,13 @@ namespace iMarket.Controllers
         private EFUserRepository userRep = new EFUserRepository();
         private EFDepartamentoRepository departamentoRep = new EFDepartamentoRepository();
 
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult Afiliacao()
         {
             return View();

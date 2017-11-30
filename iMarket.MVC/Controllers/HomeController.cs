@@ -8,8 +8,10 @@ namespace iMarket.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string cep = "")
         {
+            if (cep.Equals("99999999"))
+                return Content("CEP Correto!");
             return View();
         }
 

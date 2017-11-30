@@ -1,3 +1,42 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+
+<section id="home">
+    <div id="mycarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="images/slider/home01.jpg" alt="" class="img-responsive">
+                <div class="carousel-caption">
+                    <div class="col-md-12 text-center">
+                        <h2 class="animated2">
+                            <span>Bem Vindo ao <strong>iMarket</strong></span>
+                        </h2>
+                        <h3 class="animated3">
+                            <span>Seu supermercado, sem sair de casa!</span>
+                        </h3>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="text" id="cep" name="cep" class="form-control text-center col-lg-offset-3" placeholder="Informe seu CEP" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-14">
+                                        <input type="submit" value="Consultar Sua Região" class="btn btn-danger" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
