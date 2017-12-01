@@ -75,8 +75,7 @@
             @Html.DisplayFor(modelItem => item.DataCadastro)
         </td>
         <td>
-            @Html.ActionLink("Selecionar","SelecionarSupermercado",
-                new { id=item.Id }, new { @class = "btn btn-primary" } )
+            @Html.ActionLink("Selecionar", "Selecionar", "Supermercado", new { supermercadoId = item.Id }, new { @class = "btn btn-primary" })
         </td>
     </tr>
 }

@@ -1,0 +1,20 @@
+﻿@model iMarket.Models.Produto
+
+<div class="well">
+    <h3>
+        <strong>@Model.Nome</strong>
+        <span class="pull-right label label-primary">@Model.Preco.ToString("c")</span>
+    </h3>
+
+    @using (Html.BeginForm("AdicionarAoCarrinho", "Carrinho"))
+    {
+        <div class="pull-right">
+            @Html.HiddenFor(x => x.Id)
+            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            <input type="submit" class="btn btn-success" value="Adicionar" />
+        </div>
+    }
+
+    <span class="lead">Descrião pendente...</span>
+    <h4></h4>
+</div>

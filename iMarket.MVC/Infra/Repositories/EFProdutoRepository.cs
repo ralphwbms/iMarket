@@ -12,7 +12,7 @@ namespace iMarket.Infra.Repositories
 
         public IEnumerable<Produto> Produtos
         {
-            get { return Db.Produtos; }
+            get { return Db.Produtos.Include(p => p.Departamento); }
         }
 
         public IEnumerable<Produto> ProdutosBySupermercado(int supermercadoId)

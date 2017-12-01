@@ -193,10 +193,13 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NavController.cs" />
+    <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Controllers\SupermercadoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Infra\Context\IMarketDBContext.cs" />
     <Compile Include="Infra\Repositories\EFDepartamentoRepository.cs" />
     <Compile Include="Infra\Repositories\EFProdutoRepository.cs" />
@@ -264,6 +267,8 @@
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\PagingInfo.cs" />
+    <Compile Include="ViewModels\ProdutosListViewModel.cs" />
     <Compile Include="ViewModels\ProdutoViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -338,7 +343,10 @@
     <Content Include="Views\Admin\User\Index.cshtml" />
     <Content Include="Views\Supermercado\Produto\Index.cshtml" />
     <Content Include="Views\Supermercado\Produto\New.cshtml" />
-    <Content Include="Views\Home\SelecaoSupermercado.cshtml" />
+    <Content Include="Views\Supermercado\Listar.cshtml" />
+    <Content Include="Views\Nav\MenuProdutos.cshtml" />
+    <Content Include="Views\Produto\List.cshtml" />
+    <Content Include="Views\Produto\ProductSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

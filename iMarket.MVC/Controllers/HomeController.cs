@@ -22,17 +22,10 @@ namespace iMarket.Controllers
                 if (dadosCEP == null)
                     return Content("CEP inválido!");
                 else
-                    return RedirectToAction("SelecaoSupermercado", "Home", new { cidade = dadosCEP.cidade });
+                    return RedirectToAction("Listar", "Supermercado", new { cidade = dadosCEP.cidade });
             }
             else
                 return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
         }
 
         public ActionResult Contact()
@@ -40,12 +33,6 @@ namespace iMarket.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
-
-        public ActionResult SelecaoSupermercado(string cidade)
-        {
-            var supermercados = supermercadoRep.Supermercados.Where(s => s.Cidade == cidade);
-            return View(supermercados);
         }
     }
 }

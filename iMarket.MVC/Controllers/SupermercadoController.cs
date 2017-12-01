@@ -85,5 +85,19 @@ namespace iMarket.Controllers
 
             return View("Produto/Index", produtos);
         }
+
+        [AllowAnonymous]
+        public ActionResult Listar(string cidade)
+        {
+            var supermercados = supermercadoRep.Supermercados.Where(s => s.Cidade == cidade);
+            return View(supermercados);
+        }
+
+        [AllowAnonymous]
+        public ActionResult Selecionar(int supermercadoId)
+        {
+            Session["supermercadoId"] = supermercadoId;
+            return RedirectToAction("List", "Produto", new { supermercadoId });
+        }
     }
 }
