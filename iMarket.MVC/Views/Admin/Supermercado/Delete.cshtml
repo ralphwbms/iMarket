@@ -1,7 +1,7 @@
 ﻿@model iMarket.Models.Supermercado
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Excluir Supermercado";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -12,7 +12,7 @@
         <h3 class="panel-title">ATENÇÃO ANTES DE PROSSEGUIR</h3>
     </div>
     <div class="panel-body">
-        Tem certeza que deseja excluir o cadastro?
+        Tem certeza que deseja excluir o supermercado a seguir?
     </div>
 </div>
 
@@ -133,7 +133,7 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm("DeleteSupermercado", "Admin")) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

@@ -355,6 +355,9 @@
     <Content Include="Views\Carrinho\Finalizado.cshtml" />
     <Content Include="Views\Carrinho\Index.cshtml" />
     <Content Include="Views\Carrinho\Sumario.cshtml" />
+    <Content Include="Views\Supermercado\Produto\Details.cshtml" />
+    <Content Include="Views\Supermercado\Produto\Edit.cshtml" />
+    <Content Include="Views\Supermercado\Produto\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

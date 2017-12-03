@@ -36,6 +36,7 @@ namespace iMarket.Infra.Repositories
                     dbEntry.Nome = produto.Nome;
                     dbEntry.Preco = produto.Preco;
                     dbEntry.PrecoPromocional = produto.PrecoPromocional;
+                    dbEntry.TemEstoque = produto.TemEstoque;
                     dbEntry.DepartamentoId = produto.DepartamentoId;
                 }
             }

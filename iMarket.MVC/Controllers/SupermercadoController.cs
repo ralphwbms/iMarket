@@ -48,7 +48,24 @@ namespace iMarket.Controllers
             return View(supermercado);
         }
 
-        public ActionResult IndexProdutos()
+        [AllowAnonymous]
+        public ActionResult Listar(string cidade)
+        {
+            var supermercados = supermercadoRep.Supermercados.Where(s => s.Cidade == cidade);
+            return View(supermercados);
+        }
+
+        [AllowAnonymous]
+        public ActionResult Selecionar(int supermercadoId)
+        {
+            Session["supermercadoId"] = supermercadoId;
+            return RedirectToAction("List", "Produto", new { supermercadoId });
+        }
+
+
+
+        #region Produto Actions
+        public ActionResult IndexProduto()
         {
             string userId = User.Identity.GetUserId();
             int supermercadoId = supermercadoRep.LocalizarPorUserId(userId).Id;
@@ -87,18 +104,60 @@ namespace iMarket.Controllers
             return View("Produto/Index", produtos);
         }
 
-        [AllowAnonymous]
-        public ActionResult Listar(string cidade)
+        public ActionResult DetailsProduto(int Id)
         {
-            var supermercados = supermercadoRep.Supermercados.Where(s => s.Cidade == cidade);
-            return View(supermercados);
+            Produto produto = produtoRep.Produtos
+                .FirstOrDefault(s => s.Id == Id);
+
+            return View("Produto/Details", produto);
         }
 
-        [AllowAnonymous]
-        public ActionResult Selecionar(int supermercadoId)
+        public ActionResult EditProduto(int Id)
         {
-            Session["supermercadoId"] = supermercadoId;
-            return RedirectToAction("List", "Produto", new { supermercadoId });
+            Produto produto = produtoRep.Produtos
+                .FirstOrDefault(s => s.Id == Id);
+
+            var departamentos = departamentoRep.Departamentos.ToList();
+
+            var viewModel = new EditProdutoViewModel()
+            {
+                Departamentos = departamentos,
+                Produto = produto
+            };
+
+            return View("Produto/Edit", viewModel);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditProduto(Produto produto)
+        {
+            if (ModelState.IsValid)
+            {
+                produtoRep.SalvarProduto(produto);
+                TempData["message"] = "Alterações salvas com sucesso!";
+                return RedirectToAction("IndexProduto");
+            }
+            else
+                return View("Produto/Edit", produto);
+        }
+
+        public ActionResult DeleteProduto(int Id)
+        {
+            Produto produto = produtoRep.Produtos
+                .FirstOrDefault(s => s.Id == Id);
+
+            return View("Produto/Delete", produto);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteProduto(Produto produto)
+        {
+            produtoRep.DeletarProduto(produto.Id);
+            TempData["message"] = "Produto excluído com sucesso!";
+            return RedirectToAction("IndexProduto");
+        }
+        #endregion
     }
 }

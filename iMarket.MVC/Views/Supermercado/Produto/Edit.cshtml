@@ -1,13 +1,13 @@
-﻿@model iMarket.ViewModels.NewProdutoViewModel
+﻿@model iMarket.ViewModels.EditProdutoViewModel
 
 @{
-    ViewBag.Title = "Novo Produto";
+    ViewBag.Title = "Editando Produto";
     Layout = "~/Views/Shared/_SupermercadoLayout.cshtml";
 }
 
-<h2>Novo</h2>
+<h2>Editando</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("EditProduto", "Supermercado"))
 {
     @Html.AntiForgeryToken()
     
@@ -15,6 +15,8 @@
         <h4>Produto</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Produto.Id)
+
         <div class="form-group">
             @Html.LabelFor(model => model.Produto.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -52,10 +54,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Produto.Departamento, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Produto.DepartamentoId, new SelectList(Model.Departamentos, "Id", "Nome"), "Selecione o Departamento", new { @class = "form-control" } )
+                @Html.DropDownListFor(model => model.Produto.DepartamentoId, new SelectList(Model.Departamentos, "Id", "Nome"), "Selecione o Departamento", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Produto.DepartamentoId, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        @Html.HiddenFor(model => model.Produto.SupermercadoId)
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

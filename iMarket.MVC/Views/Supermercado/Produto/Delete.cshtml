@@ -1,0 +1,73 @@
+﻿@model iMarket.Models.Produto
+
+@{
+    ViewBag.Title = "Excluir Produto";
+    Layout = "~/Views/Shared/_SupermercadoLayout.cshtml";
+}
+
+<br />
+
+<div class="panel panel-danger">
+    <div class="panel-heading">
+        <h3 class="panel-title">ATENÇÃO ANTES DE PROSSEGUIR</h3>
+    </div>
+    <div class="panel-body">
+        Tem certeza que deseja excluir o produto a seguir?
+    </div>
+</div>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Preco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Preco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecoPromocional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecoPromocional)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TemEstoque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TemEstoque)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Departamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Departamento.Nome)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("DeleteProduto", "Supermercado")) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Cancelar", "IndexProduto", null, new { @class = "btn btn-success" })
+            <input type="submit" value="Confirmar Exclusão" class="btn btn-danger" />
+        </div>
+    }
+
+</div>

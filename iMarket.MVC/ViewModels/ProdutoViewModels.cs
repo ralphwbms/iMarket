@@ -8,4 +8,11 @@ namespace iMarket.ViewModels
         public IEnumerable<Departamento> Departamentos { get; set; }
         public Produto Produto { get; set; }
     }
+
+    public class EditProdutoViewModel
+    {
+        public IEnumerable<Departamento> Departamentos { get; set; }
+        public Produto Produto { get; set; }
+    }
+
 }

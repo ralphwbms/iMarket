@@ -1,0 +1,59 @@
+﻿@model iMarket.Models.Produto
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_SupermercadoLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Produto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Preco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Preco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecoPromocional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecoPromocional)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TemEstoque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TemEstoque)
+        </dd>
+
+        <dt>
+            Departamento
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Departamento.Nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Voltar à Lista", "IndexProduto", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Editar", "EditProduto", new { id = Model.Id }, new { @class = "btn btn-default" })
+</p>
