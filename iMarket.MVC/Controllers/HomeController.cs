@@ -28,10 +28,13 @@ namespace iMarket.Controllers
                 return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Sobre()
         {
-            ViewBag.Message = "Your contact page.";
+            return View();
+        }
 
+        public ActionResult Contato()
+        {
             return View();
         }
     }
