@@ -1,0 +1,13 @@
+﻿@model iMarket.Models.Carrinho
+
+<div class="navbar-right col-lg-2">
+    @Html.ActionLink("Checkout", "Index", "Carrinho",
+        new { returnUrl = Request.Url.PathAndQuery },
+        new { @class = "btn btn-default navbar-btn" })
+</div>
+
+<div class="navbar-text navbar-right">
+    <b>Seu Carrinho:</b>
+    @Model.Lines.Sum(x => x.Quantidade) item(s),
+    @Model.ComputeTotalValue().ToString("c")
+</div>

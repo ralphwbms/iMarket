@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
+using System.Data.Entity;
 using iMarket.Infra.Context;
 using iMarket.Models;
 
@@ -11,7 +12,7 @@ namespace iMarket.Infra.Repositories
 
         public IEnumerable<Supermercado> Supermercados
         {
-            get { return Db.Supermercados; }
+            get { return Db.Supermercados.Include(s => s.Usuario); }
         }
 
         public Supermercado LocalizarPorCNPJ( string CNPJ)

@@ -32,6 +32,7 @@ namespace iMarket.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public ActionResult Afiliacao(Supermercado supermercado)
         {
             if (ModelState.IsValid)

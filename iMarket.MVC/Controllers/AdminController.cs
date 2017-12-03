@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using iMarket.Models;
 using iMarket.Infra.Repositories;
 using iMarket.Infra.Context;
+using System.Data.Entity;
 
 namespace iMarket.Controllers
 {
@@ -48,9 +49,29 @@ namespace iMarket.Controllers
         {
             if (ModelState.IsValid)
             {
-                supermercadoRepo.SalvarSupermercado(supermercado);
-                TempData["message"] = "Alterações salvas com sucesso!";
-                return RedirectToAction("IndexSupermercado");
+                var usuario = userRepo.Users
+                .Where(u => u.UserName == supermercado.Usuario.UserName)
+                .FirstOrDefault();
+
+                if (usuario == null)
+                {
+                    TempData["error"] = "Usuário informado não existe!";
+                    return View("Supermercado/Edit", supermercado);
+                }
+                else
+                {
+                    // remove o perfil 'Supermercado' do usuário antigo
+                    userRepo.RemoveUserToRole(supermercado.UsuarioId, "Supermercado");
+                    
+                    // adiciona o perfil 'Supermercado' ao novo usuário
+                    userRepo.AddUserToRole(usuario.Id, "Supermercado");
+
+                    supermercado.UsuarioId = usuario.Id;
+
+                    supermercadoRepo.SalvarSupermercado(supermercado);
+                    TempData["message"] = "Alterações salvas com sucesso!";
+                    return RedirectToAction("IndexSupermercado");
+                }
             }
             else
                 return View("Supermercado/Edit", supermercado);
