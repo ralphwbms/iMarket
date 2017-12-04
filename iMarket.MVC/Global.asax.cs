@@ -6,7 +6,6 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using AutoMapper;
 using iMarket.App_Start;
 
 namespace iMarket
@@ -15,7 +14,7 @@ namespace iMarket
     {
         protected void Application_Start()
         {
-            Mapper.Initialize(m => m.AddProfile<MappingProfile>());
+            AutoMapperConfig.RegisterMappings();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

@@ -27,22 +27,22 @@ namespace iMarket.Controllers.Api
         }
 
         // GET /api/produtos/1
-        public ProdutoDto GetProduto(int id)
+        public IHttpActionResult GetProduto(int id)
         {
             var produto = produtoRepo.Produtos.SingleOrDefault(p => p.Id == id);
 
             if (produto == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
-            return Mapper.Map<Produto, ProdutoDto>(produto);
+            return Ok(Mapper.Map<Produto, ProdutoDto>(produto));
         }
 
         // POST /api/produtos
         [HttpPost]
-        public ProdutoDto CreateProduto(ProdutoDto produtoDto)
+        public IHttpActionResult CreateProduto(ProdutoDto produtoDto)
         {
             if (produtoDto == null)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -52,7 +52,7 @@ namespace iMarket.Controllers.Api
 
             produtoDto.Id = produto.Id;
 
-            return produtoDto;
+            return Created(new Uri(Request.RequestUri + "/" + produto.Id), produtoDto);
         }
 
         // PUT /api/produtos/1

@@ -14,7 +14,7 @@ namespace iMarket.Controllers
         public CarrinhoController()
         {
             produtoRep = new EFProdutoRepository();
-            //processarOrdem = new ProcessarOrdemEmail(new EmailSettings());
+            processarOrdem = new ProcessarOrdemEmail(new EmailSettings());
         }
 
         public ViewResult Index(string returnUrl)
