@@ -29,7 +29,8 @@
                         <li>@Html.ActionLink("Seja Um Parceiro", "Afiliacao", "Supermercado")</li>
                     }
                 </ul>
-                @Html.Partial("_LoginPartial")
+                    @Html.Partial("_LoginPartial")
+                    @Html.Action("Sumario", "Carrinho")
             </div>
         </div>
     </div>

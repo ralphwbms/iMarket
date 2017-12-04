@@ -7,9 +7,9 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Olá " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink(" ", "Index", "Manage", routeValues: null, htmlAttributes: new { title = User.Identity.GetUserName(), @class = "btn btn-lg glyphicon glyphicon-user" })
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Logoff</a></li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-lg glyphicon glyphicon-off"></a></li>
     </ul>
     }
 }
