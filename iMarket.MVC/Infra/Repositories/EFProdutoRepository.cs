@@ -53,5 +53,24 @@ namespace iMarket.Infra.Repositories
             }
             return dbEntry;
         }
+
+        public Produto AtualizarProduto(int id, Produto produto)
+        {
+            Produto dbEntry = Db.Produtos.Find(id);
+
+            if (dbEntry == null)
+                return null;
+            else
+            {
+                dbEntry.Nome = produto.Nome;
+                dbEntry.Preco = produto.Preco;
+                dbEntry.PrecoPromocional = produto.PrecoPromocional;
+                dbEntry.TemEstoque = produto.TemEstoque;
+                dbEntry.DepartamentoId = produto.DepartamentoId;
+
+                Db.SaveChanges();
+                return dbEntry;
+            }
+        }
     }
 }
