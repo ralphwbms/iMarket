@@ -2,7 +2,7 @@
 using System.Net;
 using System.Web.Script.Serialization;
 
-namespace PetHelper.AddressProvider.Providers
+namespace iMarket.AddressProvider.Providers
 {
     public static class CEPAberto
     {
@@ -24,6 +24,7 @@ namespace PetHelper.AddressProvider.Providers
             }
         }
     }
+
     public class CEPAbertoResponse
     {
         public float altitude { get; set; }

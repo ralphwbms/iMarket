@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using PetHelper.AddressProvider.Providers;
+using iMarket.AddressProvider.Providers;
 using iMarket.Infra.Repositories;
 
 namespace iMarket.Controllers
