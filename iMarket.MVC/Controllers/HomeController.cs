@@ -24,8 +24,16 @@ namespace iMarket.Controllers
                 else
                     return RedirectToAction("Listar", "Supermercado", new { cidade = dadosCEP.cidade });
             }
-            else
-                return View();
+
+            int supermercadoId = 0;
+
+            if (Session["supermercadoId"] != null)
+                supermercadoId = (int)Session["supermercadoId"];
+
+            if (supermercadoId != 0 )
+                return RedirectToAction("Selecionar", "Supermercado", new { supermercadoId = supermercadoId });
+
+            return View();
         }
 
         public ActionResult Sobre()
