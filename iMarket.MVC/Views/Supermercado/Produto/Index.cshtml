@@ -17,7 +17,7 @@
         <p>Os produtos que cadastrar aqui ficarão disponíveis para comnprar apenas após a opção "Disponível" for marcada.</p>
     </div>
 
-    <table class="table">
+    <table class="table" id="Produtos">
         <tr>
             <th>
                 #
@@ -64,11 +64,34 @@
                 <td>
                     @Html.ActionLink(" ", "DetailsProduto", new { id = item.Id }, new { @class = "btn btn-success btn-sm glyphicon glyphicon-zoom-in" })
                     @Html.ActionLink(" ", "EditProduto", new { id = item.Id }, new { @class = "btn btn-warning btn-sm glyphicon glyphicon-pencil" })
-                    @Html.ActionLink(" ", "DeleteProduto", new { id = item.Id }, new { @class = "btn btn-danger btn-sm glyphicon glyphicon-remove" })
-
+                    @*@Html.ActionLink(" ", "DeleteProduto", new { id = item.Id }, new { @class = "btn btn-danger btn-sm glyphicon glyphicon-remove" })*@
+                    <button data-produto-id="@item.Id" class="btn btn-danger btn-sm glyphicon glyphicon-remove js-delete"></button>
                 </td>
             </tr>
         }
 
     </table>
 </div>
+
+@section scripts
+{
+        <script>
+            $(document).ready(function () {
+                $("#Produtos .js-delete").on("click", function () {
+                    var button = $(this)
+
+                    bootbox.confirm("Excluir Produto? Essa ação não poderá ser desfeita.", function (result) {
+                        if (result) {
+                            $.ajax({
+                                url: "/api/produtos/" + button.attr("data-produto-id"),
+                                method: "DELETE",
+                                success: function () {
+                                    button.parents("tr").remove();
+                                }
+                            });
+                        }
+                    });
+                })
+            })
+        </script>
+}
