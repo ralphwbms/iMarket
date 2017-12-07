@@ -24,11 +24,13 @@ namespace iMarket.Infra.Repositories
             userManager.AddToRole(userId, roleName);
         }
 
-        public void RemoveUserToRole(string userId, string roleName)
+        public void RemoveUserFromRole(string userId, string roleName)
         {
             var userStore = new UserStore<User>(Db);
             var userManager = new UserManager<User>(userStore);
-            userManager.RemoveFromRole(userId, roleName);
+
+            if (!String.IsNullOrEmpty(userId))
+                userManager.RemoveFromRole(userId, roleName);
         }
 
     }

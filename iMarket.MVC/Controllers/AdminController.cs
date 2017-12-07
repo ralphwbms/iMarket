@@ -61,7 +61,7 @@ namespace iMarket.Controllers
                 else
                 {
                     // remove o perfil 'Supermercado' do usuário antigo
-                    userRepo.RemoveUserToRole(supermercado.UsuarioId, "Supermercado");
+                    userRepo.RemoveUserFromRole(supermercado.UsuarioId, "Supermercado");
                     
                     // adiciona o perfil 'Supermercado' ao novo usuário
                     userRepo.AddUserToRole(usuario.Id, "Supermercado");
