@@ -4,5 +4,45 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Checkout</h2>
+@model iMarket.Models.DetalhesEntrega
 
+@{
+    ViewBag.Title = "iMarket: Checkout";
+}
+<h2>Concluir Compras</h2>
+<p>Por favor preencha as informações abaixo para que possamos entregar suas compras!</p>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <h3>Enviar para</h3>
+    <div class="form-group">
+        <label>Nome</label>
+        @Html.TextBoxFor(x => x.Nome, new { @class = "form-control" })
+    </div>
+
+    <h3>Dados Entrega</h3>
+
+    foreach (var property in ViewData.ModelMetadata.Properties)
+    {
+        if (property.PropertyName != "Nome" && property.PropertyName != "AgendarEntrega")
+        {
+            <div class="form-group">
+                <label>@(property.DisplayName ?? property.PropertyName)</label>
+                @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+            </div>
+        }
+    }
+
+    <h3>Agendamento</h3>
+    <div class="checkbox">
+        <label>
+            @Html.EditorFor(x => x.AgendarEntrega)
+            Agendar Entrega
+        </label>
+    </div>
+
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="Completar compra" />
+    </div>
+}
