@@ -378,6 +378,7 @@
     <Content Include="Views\Supermercado\Produto\Edit.cshtml" />
     <Content Include="Views\Supermercado\Produto\Delete.cshtml" />
     <Content Include="Views\Supermercado\SelecaoSupermercado.cshtml" />
+    <Content Include="Views\Supermercado\Detalhes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

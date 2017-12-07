@@ -79,6 +79,15 @@ namespace iMarket.Controllers
             return PartialView(supermercado);
         }
 
+        [AllowAnonymous]
+        public ActionResult Detalhes(int Id)
+        {
+            var supermercado = supermercadoRep.Supermercados
+                .FirstOrDefault(s => s.Id == Id);
+
+            return View(supermercado);
+        }
+
         #region Produto Actions
         public ActionResult IndexProduto()
         {

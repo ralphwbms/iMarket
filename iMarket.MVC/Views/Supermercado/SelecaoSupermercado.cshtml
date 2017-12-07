@@ -2,6 +2,6 @@
 
 @if (Model != null)
 {
-    <li>@Html.ActionLink(@Model.NomeFantasia, "Detalhes", "Supermercado", new { Id = Model.Id } )</li>
+    <li>@Html.ActionLink(@Model.NomeFantasia, "Detalhes", new { Id = Model.Id } )</li>
 }
 
