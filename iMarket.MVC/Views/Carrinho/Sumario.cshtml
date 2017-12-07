@@ -1,6 +1,6 @@
 ﻿@model iMarket.Models.Carrinho
     <li>
-        @Html.ActionLink(" ", "Index", "Carrinho",
+        @Html.ActionLink(@Model.Lines.Sum(x => x.Quantidade).ToString(), "Index", "Carrinho",
         new { returnUrl = Request.Url.PathAndQuery },
         new { @class = "glyphicon glyphicon-shopping-cart" })
     </li>
