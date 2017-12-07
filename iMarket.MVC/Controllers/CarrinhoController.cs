@@ -26,7 +26,7 @@ namespace iMarket.Controllers
             });
         }
 
-        public RedirectToRouteResult AdicionarAoCarrinho(int Id, string returnUrl)
+        public RedirectResult AdicionarAoCarrinho(int Id, string returnUrl)
         {
             Produto produto = produtoRep.Produtos
                 .FirstOrDefault(p => p.Id == Id);
@@ -35,7 +35,7 @@ namespace iMarket.Controllers
             {
                 ObterCarrinho().AddItem(produto, 1);
             }
-            return RedirectToAction("Index", new { returnUrl });
+            return Redirect(returnUrl);
         }
 
         public RedirectToRouteResult RemoverDoCarrinho(int Id, string returnUrl)
