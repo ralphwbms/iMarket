@@ -19,7 +19,7 @@ namespace iMarket.Controllers
         public PartialViewResult Menu(string departamento = null)
         {
 
-            ViewBag.DepartamentoSelecionado = departamento;
+            ViewBag.DepartamentoSelecionado = departamento == null ? "Todos Produtos" : departamento;
 
             IEnumerable<string> departamentos = departamentoRep.Departamentos
                                     .Select(d => d.Nome).ToList();

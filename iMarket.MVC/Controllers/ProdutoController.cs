@@ -24,6 +24,7 @@ namespace iMarket.Controllers
 		{
 
 			supermercadoId = ((Supermercado)Session["Supermercado"]).Id;
+			ViewBag.DepartamentoSelecionado = departamento == null ? "Todos Produtos" : departamento;
 
 			ProdutosListViewModel model =
 				new ProdutosListViewModel
