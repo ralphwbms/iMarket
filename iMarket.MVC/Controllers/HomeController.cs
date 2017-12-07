@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using iMarket.AddressProvider.Providers;
+using iMarket.Models;
 using iMarket.Infra.Repositories;
 
 namespace iMarket.Controllers
@@ -25,13 +26,13 @@ namespace iMarket.Controllers
                     return RedirectToAction("Listar", "Supermercado", new { cidade = dadosCEP.cidade });
             }
 
-            int supermercadoId = 0;
+            Supermercado supermercado = new Supermercado();
 
-            if (Session["supermercadoId"] != null)
-                supermercadoId = (int)Session["supermercadoId"];
+            if (Session["Supermercado"] != null)
+                supermercado = (Supermercado)Session["supermercado"];
 
-            if (supermercadoId != 0 )
-                return RedirectToAction("Selecionar", "Supermercado", new { supermercadoId = supermercadoId });
+            if (supermercado.Id != 0 )
+                return RedirectToAction("Selecionar", "Supermercado", new { supermercadoId = supermercado.Id });
 
             return View();
         }

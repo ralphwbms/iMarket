@@ -29,8 +29,13 @@
                         <li>@Html.ActionLink("Seja Um Parceiro", "Afiliacao", "Supermercado")</li>
                     }
                 </ul>
-                    @Html.Partial("_LoginPartial")
+                <ul class="nav navbar-nav navbar-righ">
+                    @Html.Action("SelecaoSupermercado", "Supermercado")
+                </ul>
+                @Html.Partial("_LoginPartial")
+                <ul class="nav navbar-nav navbar-right">
                     @Html.Action("Sumario", "Carrinho")
+                </ul>
             </div>
         </div>
     </div>
@@ -41,7 +46,7 @@
             <div>
                 <div class="row">
                     <div class="col-md-6">
-                        <p>Copyright ©2017 <strong>iMarket</strong> - Projetado &amp; Desenvolvido por Ralph Silva e José Luiz</a></p>
+                        <p>Copyright ©2017 <strong>iMarket</strong> - Projetado &amp; Desenvolvido por Ralph Silva e José Luiz</p>
                     </div>
                 </div>
             </div>

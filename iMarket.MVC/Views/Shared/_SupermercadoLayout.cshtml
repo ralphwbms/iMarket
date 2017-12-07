@@ -25,7 +25,9 @@
                     <li>@Html.ActionLink("Vendas", "Index", "Vendas")</li>
                     <li>@Html.ActionLink("Configuração Entregas", "Index", "Admin")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                <ul class="nav navbar-nav navbar-right">
+                    @Html.Partial("_LoginPartial")
+                </ul>
             </div>
         </div>
     </div>

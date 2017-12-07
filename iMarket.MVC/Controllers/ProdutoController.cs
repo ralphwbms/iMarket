@@ -10,48 +10,45 @@ using iMarket.Models;
 
 namespace iMarket.Controllers
 {
-    public class ProdutoController : Controller
-    {
-        private EFProdutoRepository produtoRep;
-        public int PageSize = 4;
+	public class ProdutoController : Controller
+	{
+		private EFProdutoRepository produtoRep;
+		public int PageSize = 4;
 
-        public ProdutoController()
-        {
-            produtoRep = new EFProdutoRepository();
-        }
+		public ProdutoController()
+		{
+			produtoRep = new EFProdutoRepository();
+		}
 
-        public ViewResult List(int supermercadoId = 0, string departamento = null, int pagina = 1)
-        {
+		public ViewResult List(int supermercadoId = 0, string departamento = null, int pagina = 1)
+		{
 
-            supermercadoId = (int)Session["supermercadoId"];
+			supermercadoId = ((Supermercado)Session["Supermercado"]).Id;
 
-            ProdutosListViewModel model =
-                new ProdutosListViewModel
-                {
+			ProdutosListViewModel model =
+				new ProdutosListViewModel
+				{
 
-                    //                return Db.Produtos.Where(p => p.SupermercadoId == supermercadoId).
-                    //Include(p => p.Departamento).ToList();
+					Produtos = produtoRep.Produtos
+							.Where(p => p.SupermercadoId == supermercadoId)
+							.Where(p => departamento == null || p.Departamento.Nome == departamento)
+							.OrderBy(p => p.Id)
+							.Skip((pagina - 1) * PageSize)
+							.Take(PageSize),
 
-                    Produtos = produtoRep.Produtos
-                            .Where(p => p.SupermercadoId == supermercadoId)
-                            .Where(p => departamento == null || p.Departamento.Nome == departamento)
-                            .OrderBy(p => p.Id)
-                            .Skip((pagina - 1) * PageSize)
-                            .Take(PageSize),
+					PagingInfo = new PagingInfo
+					{
+						CurrentPage = pagina,
+						ItemsPerPage = PageSize,
+						TotalItems = departamento == null ?
+						produtoRep.Produtos.Where(p => p.SupermercadoId == supermercadoId).Count() :
+						produtoRep.Produtos.Where(p => p.SupermercadoId == supermercadoId && p.Departamento.Nome == departamento).Count()
+					},
 
-                    PagingInfo = new PagingInfo
-                    {
-                        CurrentPage = pagina,
-                        ItemsPerPage = PageSize,
-                        TotalItems = departamento == null ?
-                        produtoRep.Produtos.Where(p => p.SupermercadoId == supermercadoId).Count() :
-                        produtoRep.Produtos.Where(p => p.SupermercadoId == supermercadoId && p.Departamento.Nome == departamento).Count()
-                    },
+					DepartamentoIdAtual = departamento
+				};
 
-                    DepartamentoIdAtual = departamento
-                };
-
-            return View(model);
-        }
-    }
+			return View(model);
+		}
+	}
 }

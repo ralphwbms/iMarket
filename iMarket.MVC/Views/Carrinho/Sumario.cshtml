@@ -1,14 +1,9 @@
 ﻿@model iMarket.Models.Carrinho
-<ul class="nav navbar-nav">
-    <div class=" col-lg-2 navbar-right">
+    <li>
         @Html.ActionLink(" ", "Index", "Carrinho",
         new { returnUrl = Request.Url.PathAndQuery },
-        new { @class = "btn btn-default navbar-btn glyphicon glyphicon-shopping-cart" })
-    </div>
-
-    <div class="navbar-text navbar-right">
-        <div class=""></div>
-        @Model.Lines.Sum(x => x.Quantidade) item(s),
-        @Model.ComputeTotalValue().ToString("c")
-    </div>
-</ul>
+        new { @class = "glyphicon glyphicon-shopping-cart" })
+    </li>
+    <li class="col-lg-2">
+        
+    </li>

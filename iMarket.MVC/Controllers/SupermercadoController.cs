@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 using iMarket.Models;
 using iMarket.ViewModels;
 using iMarket.Infra.Repositories;
@@ -58,10 +59,25 @@ namespace iMarket.Controllers
         [AllowAnonymous]
         public ActionResult Selecionar(int supermercadoId)
         {
-            Session["supermercadoId"] = supermercadoId;
-            return RedirectToAction("List", "Produto", new { supermercadoId });
+            var supermercado = supermercadoRep.Supermercados
+                    .FirstOrDefault(s => s.Id == supermercadoId);
+
+            Session["Supermercado"] = supermercado;
+            return RedirectToAction("List", "Produto", new { supermercado.Id });
         }
 
+        [AllowAnonymous]
+        private Supermercado ObtemSupermercadoEscolhido()
+        {
+            return (Supermercado)Session["Supermercado"];
+        }
+
+        [AllowAnonymous]
+        public PartialViewResult SelecaoSupermercado()
+        {
+            Supermercado supermercado = ObtemSupermercadoEscolhido();
+            return PartialView(supermercado);
+        }
 
         #region Produto Actions
         public ActionResult IndexProduto()

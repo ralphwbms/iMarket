@@ -1,0 +1,7 @@
+﻿@model iMarket.Models.Supermercado
+
+@if (Model != null)
+{
+    <li>@Html.ActionLink(@Model.NomeFantasia, "Detalhes", "Supermercado", new { Id = Model.Id } )</li>
+}
+
