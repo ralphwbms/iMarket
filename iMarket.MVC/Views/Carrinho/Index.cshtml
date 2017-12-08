@@ -43,9 +43,15 @@
     </tbody>
     <tfoot>
         <tr>
+            <td colspan="3" class="text-right">Frete:</td>
+            <td class="text-right">
+                @Model.Carrinho.ShippingCost().ToString("c")
+            </td>
+        </tr>
+        <tr>
             <td colspan="3" class="text-right">Total:</td>
             <td class="text-right">
-                @Model.Carrinho.ComputeTotalValue().ToString("c")
+                @Model.Carrinho.ComputeTotalValuePlusShippingCost().ToString("c")
             </td>
         </tr>
     </tfoot>

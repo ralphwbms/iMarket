@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace iMarket.Models
@@ -6,6 +7,7 @@ namespace iMarket.Models
     public class Carrinho
     {
         private List<CartLine> lineCollection = new List<CartLine>();
+        private const decimal valorMinimoFrete = 10.0M;
 
         public void AddItem(Produto produto, int quantidade)
         {
@@ -35,8 +37,28 @@ namespace iMarket.Models
         public decimal ComputeTotalValue()
         {
             return lineCollection.Sum(e => e.Produto.Preco * e.Quantidade);
-
         }
+
+        public decimal ComputeTotalValuePlusShippingCost()
+        {
+            return ComputeTotalValue() + ShippingCost();
+        }
+
+        public decimal ShippingCost()
+        {
+            var valorTotalCompra = ComputeTotalValue();
+
+            if (valorTotalCompra == 0)
+                return 0M;
+
+            var valorFrete = Math.Round(valorTotalCompra * 0.1M, 2);
+
+            if (valorFrete < valorMinimoFrete)
+                return valorMinimoFrete;
+            else
+                return valorFrete;
+        }
+
         public void Clear()
         {
             lineCollection.Clear();
